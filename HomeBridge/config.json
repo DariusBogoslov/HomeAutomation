@@ -1,0 +1,51 @@
+{
+    "bridge": {
+        "name": "BedroomBridge",
+        "username": "B8:27:EB:B4:64:C7",
+        "port": 51826,
+        "pin": "031-45-159"
+    },
+    "platforms": [
+        {
+            "name": "Config",
+            "port": 2213,
+            "auth": "form",
+            "theme": "dark-mode",
+            "tempUnits": "c",
+            "sudo": false,
+            "ssl": {
+                "key": "/home/pi/.homebridge/certificate/key.pem",
+                "cert": "/home/pi/.homebridge/certificate/cert.pem"
+            },
+            "log": {
+                "method": "file",
+                "path": "/var/log/homebridge.log"
+            },
+            "platform": "config"
+        },
+        {
+            "platform": "Hue",
+            "users": {
+                "B827EBFFFEB464C7": "470a0c52e89555f73b11904c84af6192"
+            },
+            "lights": true,
+            "host": "192.168.1.106"
+        }
+    ],
+    "accessories": [
+        {
+            "accessory": "Http",
+            "name": "Bedroom Light",
+            "on_url": "http://192.168.1.117/SWITCH=ON",
+            "off_url": "http://192.168.1.117/SWITCH=OFF",
+            "http_method": "GET"
+        },
+        {
+            "accessory": "Http",
+            "name": "Bathroom Light",
+            "on_url": "http://192.168.1.244/SWITCH=ON",
+            "off_url": "http://192.168.1.244/SWITCH=OFF",
+            "http_method": "GET"
+        }
+    ]
+}
